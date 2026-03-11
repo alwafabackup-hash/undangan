@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Wedding Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        header {
+            background: url('cover.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        section {
+            padding: 50px 20px;
+        }
+        .couple {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .countdown {
+            font-size: 2em;
+            text-align: center;
+        }
+        /* Add more styles as needed */
+    </style>
+</head>
+<body id="body">
+    <header>
+        <h1>Welcome to Our Wedding</h1>
+        <p id="guestName">Guest: <span></span></p>
+    </header>
+
+    <section class="couple">
+        <div>
+            <h2>Meet the Couple</h2>
+            <p>Bride Name</p>
+            <p>Bride Description</p>
+        </div>
+        <div>
+            <h2>Groom Name</h2>
+            <p>Groom Description</p>
+        </div>
+    </section>
+
+    <section class="countdown">
+        <h2>Countdown to the Event</h2>
+        <div id="timer"></div>
+    </section>
+
+    <section>
+        <h2>Event Details</h2>
+        <p>Date: March 11, 2026</p>
+        <p>Location: Venue Name</p>
+    </section>
+
+    <section>
+        <h2>Gallery</h2>
+        <!-- Add images for gallery -->
+    </section>
+
+    <section>
+        <h2>RSVP</h2>
+        <form id="rsvpForm">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+
+    <section>
+        <h2>Thank You!</h2>
+        <p>We can't wait to celebrate with you!</p>
+    </section>
+
+    <audio controls autoplay loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Countdown Timer
+        const countDownDate = new Date("Mar 11, 2026 19:09:41").getTime();
+        const timer = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h " +
+                minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("timer").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+
+        // Fill Guest Name from URL Parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const guestName = urlParams.get('name') || 'Guest';
+        document.querySelector('#guestName span').textContent = guestName;
+    </script>
+</body>
+</html>
