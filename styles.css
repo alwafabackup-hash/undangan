@@ -1,0 +1,33 @@
+.styles {
+    font-family: 'Times New Roman', serif;
+   
+    /* Background color */
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #d4af37; /* Gold accents */
+    font-weight: bold;
+}
+
+.invitation {
+    border: 2px solid #d4af37;
+    background-color: #f5f1e8;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.invitation:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .invitation {
+        padding: 15px;
+        margin: 15px;
+    }
+}
